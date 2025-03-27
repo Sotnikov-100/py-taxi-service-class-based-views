@@ -17,7 +17,7 @@ class CarListView(generic.ListView):
     template_name = "taxi/car_list.html"
 
 
-class CarDetailView(generic.ListView):
+class CarDetailView(generic.DetailView):
     model = Car
     template_name = "taxi/car_detail.html"
 
@@ -28,9 +28,12 @@ class DriverListView(generic.ListView):
     template_name = "taxi/driver_list.html"
 
 
-class DriverDetailView(generic.ListView):
+class DriverDetailView(generic.DetailView):
     model = Driver
     template_name = "taxi/driver_detail.html"
+
+    def get_queryset(self):
+        return Driver.objects.prefetch_related("cars__manufacturer")
 
 
 class IndexView(generic.TemplateView):

@@ -22,7 +22,7 @@
         {% if cars %}
           <div class="list-group">
             {% for car in cars %}
-              <a href="{% url 'car-detail' car.id %}" class="list-group-item list-group-item-action">
+              <a href="{% url 'taxi:car-detail' car.id %}" class="list-group-item list-group-item-action">
                 {{ car.model }} ({{ car.manufacturer.name }})
               </a>
             {% endfor %}
